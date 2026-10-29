@@ -19,6 +19,10 @@ dependencies {
     implementation("org.springframework:spring-expression:7.0.8")
     implementation("org.springframework:spring-aop:7.0.8")
 
+    // @Aspect AOP 어노테이션과 포인트컷 표현식을 사용하기 위한 라이브러리
+    // Source: https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
+    implementation("org.aspectj:aspectjweaver:1.9.25.1")
+
     testImplementation platform('org.junit:junit-bom:6.0.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
