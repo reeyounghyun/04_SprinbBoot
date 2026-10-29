@@ -16,6 +16,12 @@ public class BookService {
     * */
     @Autowired
     private BookDAO bookDAO;
+    // 필드를 final로 선언할 수없어 의존관계의 불변성 보장 어려움
+
+
+    public BookService() {
+
+    }
 
     // 도서목록 조회
     public List<BookDTO> selectAllBooks() {

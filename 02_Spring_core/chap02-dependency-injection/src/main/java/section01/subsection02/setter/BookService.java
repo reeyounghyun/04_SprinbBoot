@@ -10,7 +10,7 @@ import java.util.List;
 @Service("bookServiceSetter")
 public class BookService {
 
-
+    // final 사용 못함 = setter를 이용해 의존 객체를 교체 가능하다.
     private BookDAO bookDAO;
 
     @Autowired
