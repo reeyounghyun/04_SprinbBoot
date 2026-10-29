@@ -1,4 +1,4 @@
-package section01;
+package section01.aop;
 
 public interface MemberService {
 
