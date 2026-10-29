@@ -10,6 +10,18 @@ public class Application {
         MemberService memberService = context.getBean(MemberService.class);
 
         System.out.println("===== TARGET 실행");
-        System.out.println(memberService.processMember(false));
+        //System.out.println(memberService.processMember(false));
+
+        // within 예제
+        //memberService.selectMember();
+
+        // this 예제
+        // memberService.checkMember();
+
+        // args 예제
+        // memberService.registerMember("홍길동", 20);
+
+
+        memberService.updateMember();
     }
 }

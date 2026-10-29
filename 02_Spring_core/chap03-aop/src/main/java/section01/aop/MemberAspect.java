@@ -20,31 +20,41 @@ public class MemberAspect {
     public void advicePointcut() {
     }
 
-    /**Before**/
+    /**
+     * Before
+     **/
     @Before("advicePointcut()")
     public void beforeAdvice() {
         System.out.println("beforeAdvice");
     }
 
-    /**AfterReturning**/
+    /**
+     * AfterReturning
+     **/
     @AfterReturning(value = "advicePointcut()", returning = "result")
     public void AfterReturningAdvice(Object result) {
         System.out.println("[AfterReturning 반환값:]" + result);
     }
 
-    /**After**/
+    /**
+     * After
+     **/
     @After("advicePointcut()")
     public void AfterAdvice() {
         System.out.println("After 매서드 실행 후");
     }
 
-    /**AfterThrowing**/
+    /**
+     * AfterThrowing
+     **/
     @AfterThrowing(pointcut = "advicePointcut()", throwing = "exception")
     public void afterThowingAdvice(Exception exception) {
         System.out.println("After 매서드 실행 중 예외 발생" + exception.getMessage());
     }
 
-    /**Around**/
+    /**
+     * Around
+     **/
     @Around("advicePointcut()")
     public Object aroundAdvice(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.nanoTime();
@@ -53,11 +63,36 @@ public class MemberAspect {
 
         try {
             // proceed() 가 Taget 매서드가 실행된다.
-           return joinPoint.proceed();
+            return joinPoint.proceed();
         } finally {
             long executionTime = System.nanoTime() - startTime;
             System.out.println("Around Advice 실행 후, 실행 시간: " + executionTime + " ns");
         }
     }
+
+    /*within: 해당 클래스 내부를 선택*/
+    @Before("within(section01.aop.MemberServiceImpl) && execution(* selectMember(..))")
+    public void withinPointCut() {
+        System.out.println("[within] MemberServiceImpl 적용");
+    }
+
+    /*this: 해당 타입을 선택 함*/
+    @Before("this(section01.aop.MemberService) && execution(* checkMember(..))")
+    public void thisPointCut() {
+        System.out.println("[this] MemberService 적용");
+    }
+
+    /*args: 해당 매개변수를 가진 메서드에 적용*/
+    @Before(value = "args(name, age) && execution(* registerMember(..))", argNames = "name,age")
+    public void argsPointCut(String name, int age) {
+        System.out.println("[args] 이름: " + name + ", 나이: " + age);
+    }
+
+    // 어노테이션 만들기
+    @Before("@annotation(section01.aop.AopLog)")
+    public void annotationPointCut() {
+        System.out.println("annotationPointCut 실행");
+    }
+
 }
 
