@@ -1,19 +1,19 @@
-package section02.javaconfig;
+package section04;
 
 import common.MemberDTO;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 
-/*@Configuration
-* 정의: 클래스가 설정파일을 의미
-* 이 클래스가 spirng-context.xml 같은 설정 파일 역할을 한다*/
+@Configuration("ConfigurationSection04")
 public class ContextConfiguration {
 
-    /* 직접 빈을 등록해야하는 경우만 JAVA Config 방식을 사용함.
-    * - 1.외부 라이브러리를 사용할때 : 외부 라이브러리에 이노테이션을 붙일 수 없음.
-    * - 2.객체를 꼭 초기화해야 할 때 : 설정값을 넣어서 Bean으로 등록함.
-    * */
+    /*
+     * @Bean의 기본 Scope
+     * - singleton : 싱글톤
+     * - 정해진 범위 안에서 객체의 인스턴스를 하나만 생성하고 해당 객체를
+     * - 필요로하는 곳들에서는 생성된 인스턴스를 재사용하게끔하는개념
+     * */
     @Bean(name = "member")
     public MemberDTO getMember() {
         return new MemberDTO(1, "user01", "pass01", "bear");
