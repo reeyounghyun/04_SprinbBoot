@@ -1,0 +1,15 @@
+### IntelliJ IDEA ###
+.idea/
+*.iml
+
+### Build ###
+.gradle/
+build/
+bin/
+!gradle/wrapper/gradle-wrapper.jar
+
+### Postman (local) ###
+.postman/
+
+### OS ###
+.DS_Store
