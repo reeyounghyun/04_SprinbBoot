@@ -3,5 +3,24 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="member" class="common.MemberDTO">
+
+    <!-- 가져온 값
+    private int sequence;
+    private String id;
+    private String pwd;
+    private String name;
+    -->
+
+        <!--int 타입에 첫번 째 파라미터를 1을 전달-->
+        <constructor-arg index="0" value="1"/>
+        <constructor-arg index="1" value="user01"/>
+        <constructor-arg name="pwd">
+            <value>pass01</value>
+        </constructor-arg>
+        <constructor-arg name="name">
+            <value>bear</value>
+        </constructor-arg>
+    </bean>
 
 </beans>
