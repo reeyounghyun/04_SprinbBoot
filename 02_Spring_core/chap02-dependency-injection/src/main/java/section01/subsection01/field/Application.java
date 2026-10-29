@@ -11,6 +11,7 @@ public class Application {
 
         BookService bookService = context.getBean("bookServiceField", BookService.class);
 
+        bookService.selectAllBooks().forEach(System.out::println);
         System.out.println(bookService.searchBookBySequence(1));
     }
 }
