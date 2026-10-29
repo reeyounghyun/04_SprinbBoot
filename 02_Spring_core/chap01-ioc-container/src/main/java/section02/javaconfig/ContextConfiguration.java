@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 /*@Configuration
 * 정의: 클래스가 설정파일을 의미
 * 이 클래스가 spirng-context.xml 같은 설정 파일 역할을 한다*/
-W
 public class ContextConfiguration {
 
     /* 직접 빈을 등록해야하는 경우만 JAVA Config 방식을 사용함.

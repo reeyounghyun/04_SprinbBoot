@@ -16,7 +16,7 @@ public class Application {
         // 객체를 직접 만들지 않았는데도  ApplicationContext가 객체를 만들어서 가져와줌 // new만들지 않아도
 
         // ID로 가져오는 방법
-        MemberDTO member1 = (MemberDTO)context.getBean("member");
+        MemberDTO member1 = (MemberDTO) context.getBean("member");
         System.out.println("member1 =" + member1);
 
         // 클래스의 메타정보를 이용해 가져오는 방법
