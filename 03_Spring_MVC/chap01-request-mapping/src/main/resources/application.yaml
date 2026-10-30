@@ -1,3 +1,15 @@
-spring:
-  application:
+# 스프리 부트의 어플리케이션 환경 설정 파일
+
+# 들여쓰기 구조료, 공백의 갯수 주의해야 한다.
+spring: # 스프링 프레임워크 관련설정
+  application: # 어플리케이션의 이름
     name: chap01-request-mapping
+  thymeleaf: # 타임리프 관련 설정
+    cache: false # 개발 중에는 캐시를 꺼서 수정 사항이 바로 반영되도록 한다.
+
+
+# 내장 톰캣 관련 설정 할 수 있다.
+server:  # 서버 관련 설정
+  port: 8081
+
+#url, 데이터베이스 접근 커넥션 정보
