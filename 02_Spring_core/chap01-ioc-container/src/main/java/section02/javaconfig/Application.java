@@ -14,8 +14,6 @@ public class Application {
                 new AnnotationConfigApplicationContext(ContextConfiguration.class);
 
         // 객체를 직접 만들지 않았는데도  ApplicationContext가 객체를 만들어서 가져와줌 // new만들지 않아도
-
-        // ID로 가져오는 방법
         MemberDTO member1 = (MemberDTO) context.getBean("member");
         System.out.println("member1 =" + member1);
 

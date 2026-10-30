@@ -21,7 +21,7 @@ public class BookService {
 
     // 생성자 주입
     // BookService 빈을 생성할때 BookDAO 타입의 빈을 생성자 인자로 전달한다.
-    // @Autowired // springboot 4.3 부터 생성자가 한개면 @Autowired를 생략해도 자동으로 의존성을 주입한다.
+    // @Autowired // Spring Framework 4.3 부터 생성자가 한개면 @Autowired를 생략해도 자동으로 의존성을 주입한다
     public BookService(BookDAO bookDAO) {
         this.bookDAO = bookDAO;
     }

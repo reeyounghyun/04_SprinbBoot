@@ -10,11 +10,12 @@ public class Application {
     // XML 파일로 설정정보를 담아서 만들어보기
     public static void main(String[] args) {
 
+        // new로 GenericXmlApplicationContext 객체를 새로 만들고,
+        // 그 객체를 ApplicationContext 타입 변수 context에 담는다.
         ApplicationContext context = new GenericXmlApplicationContext("xmlconfig/spirng-context.xml");
 
-        // 객체를 직접 만들지 않았는데도  ApplicationContext가 객체를 만들어서 가져와줌 // new만들지 않아도
-
         // ID로 가져오는 방법
+        // 객체를 직접 만들지 않음에도 ApplicationContext가 객체를 만들어서 가져와줌.
         MemberDTO member1 = (MemberDTO)context.getBean("member");
         System.out.println("member1 =" + member1);
 

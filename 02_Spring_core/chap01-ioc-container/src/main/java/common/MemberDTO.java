@@ -1,6 +1,7 @@
 package common;
 
 // 기본생성자, 모든필드를 초기화하는 생성자, 모든필드의 Getter/Setter, toString
+// 회원 정보를 담는 그릇(sequence, id, pwd, name)
 public class MemberDTO {
 
     private int sequence;

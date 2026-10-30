@@ -9,6 +9,7 @@ import java.util.Map;
 //@Component
 //@Repository
 @Repository
+// │ 회원 데이터를 다루는 클래스(Map으로 가짜 DB 역할), @Repository 붙음
 public class MemberDAO {
     private final Map<Integer, MemberDTO> memberMap;
 
