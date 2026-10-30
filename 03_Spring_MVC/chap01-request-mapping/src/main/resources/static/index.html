@@ -37,5 +37,35 @@
     </div>
 
     <hr/>
+
+    <h1>chap02. Class Mapping Test</h1>
+    <div>
+        <h2>1.클래스에 요청 매핑하기</h2>
+        <h3>GET요청: /order/regist</h3>
+        <button onclick="location.href='/order/regist'">GET 주문 등록 요청</button>
+    </div>
+
+    <hr/>
+
+    <div>
+        <h2>2.여러 개의 URL을 하나의 메소드에 매핑하기</h2>
+        <h3>POST요청 : /order/modify</h3>
+        <form action="/order/modify" method="post">
+            <button type="submit">POST 주문 수정 요청</button>
+        </form>
+    </div>
+
+    <div>
+        <h3>POST요청 : /order/delete</h3>
+        <form action="/order/delete" method="post">
+            <button type="submit">POST 주문 삭제 요청</button>
+        </form>
+    </div>
+
+    <hr/>
+    <div>
+        <h3>Get요청 : /order/5</h3>
+        <button onclick="location.href='/order/detail/5'">GET 5번 상세조회</button>
+    </div>
 </body>
 </html>
