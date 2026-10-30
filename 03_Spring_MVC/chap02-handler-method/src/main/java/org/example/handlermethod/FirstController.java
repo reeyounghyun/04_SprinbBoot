@@ -1,6 +1,7 @@
 package org.example.handlermethod;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -85,5 +86,42 @@ public class FirstController {
     @PostMapping("search")
     public String searchMenu(@ModelAttribute("menu") MenuDTO menu) {
         return "first/searchResult";
+    }
+
+
+    @GetMapping("login")
+    public void login() {
+
+    }
+
+    /*
+     * session: 사용자별 정보를 일정시간 동안 서버에 보관하는 저장소
+     * -- 세션은 사물함, JSESSIONID는 열쇠 번호
+     *    정보(로그인 id 등)는 서버의 사물함에 있고, 브라우저는 열쇠 번호(쿠키)만 들고 다닌다.
+     *
+     * -- 동작 원리
+     *    1. 브라우저가 처음 접속
+     *    2. 서버: 세션(사물함)을 만들고 번호(JSESSIONID)를 붙임
+     *    3. 서버 → 브라우저: 그 번호를 쿠키로 보냄
+     *    4. 이후 요청마다 브라우저가 쿠키(JSESSIONID)를 같이 보냄
+     *    5. 서버: 번호를 보고 그 사용자의 세션을 찾아서 꺼냄
+     *
+     * -- 서버의 세션 저장소 예시
+     *    JSESSIONID        보관된 값
+     *    a12345      →     id = "bear"   (기본 크롬)
+     *    b12345      →     id = "tiger"  (시크릿탭 크롬)
+     *
+     * -- 같은 크롬의 탭끼리는 쿠키를 공유하므로 세션도 하나다.
+     *    시크릿탭은 쿠키 저장소가 따로라서 다른 사용자처럼 새 세션이 만들어진다.
+     * -- 쿠키(JSESSIONID)를 지우면 서버의 세션을 찾아갈 수 없어서 새 세션이 만들어진다. (로그인 풀림)
+     * -- 확인: 개발자도구 → Application → Cookies → JSESSIONID
+     * */
+    @PostMapping("login")
+    public String loginSession(String id, String pwd, HttpSession session) {
+
+        // 값을 담아주기
+        session.setAttribute("id", id); // 세션에 값 저장
+
+        return "first/loginResult";
     }
 }
