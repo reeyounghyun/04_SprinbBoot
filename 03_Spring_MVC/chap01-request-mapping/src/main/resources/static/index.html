@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Mapping</title>
+</head>
+<body>
+    <h1>chap01. Spring MVC 테스트1</h1>
+    <div>
+        <h2>1.메소드에 요청 매핑하기</h2>
+        <h3>GET요청: /menu/regist</h3>
+        <button onclick="location.href='/menu/regist'">GET 메뉴 등록 요청</button>
+    </div>
+
+    <div>
+        <h3>POST요청 : /menu/regist</h3>
+        <form action="/menu/regist" method="post">
+            <button type="submit">POST 메뉴 등록 요청</button>
+        </form>
+    </div>
+
+    <hr/>
+
+
+    <div>
+        <h2>2.메소드 지정해서 요청 매핑하기</h2>
+        <h3>GET요청: /menu/modify</h3>
+        <button onclick="location.href='/menu/modify'">GET 메뉴 수정 요청</button>
+    </div>
+
+    <div>
+        <h3>POST요청 : /menu/modify</h3>
+        <form action="/menu/modify" method="post">
+            <button type="submit">POST 메뉴 수정 요청</button>
+        </form>
+    </div>
+
+    <hr/>
+</body>
+</html>
