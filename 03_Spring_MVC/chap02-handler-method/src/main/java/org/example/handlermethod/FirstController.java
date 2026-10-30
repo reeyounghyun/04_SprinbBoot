@@ -6,6 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+
 @Controller
 @RequestMapping("/first/*")
 public class FirstController {
@@ -142,4 +146,36 @@ public class FirstController {
         session.invalidate(); // 세션 삭제
         return "first/loginResult";
     }
+
+    @GetMapping("body")
+    public void body() {
+
+    }
+
+    /*
+     * @RequestBody : HTTP 요청 본문을 읽어서 핸들러 메소드의 매개변수로 전달
+     * 일반 form 요청은 쿼리문자열의 형태이다. => ex) body : name=마라탕&price=10000&categoryCode=1&orderableStatus=y
+     *  JSON은 JACKSON 메시지 컨버터로 객체로 변환도 가능
+     *
+     * -- 요청에서 값을 꺼내는 어노테이션
+     *    어노테이션        꺼내는 곳
+     *    @RequestBody      요청 본문
+     *    @RequestHeader    요청 헤더
+     *    @CookieValue      쿠키
+     * */
+    @PostMapping("body")
+    public void bodyTest(
+            @RequestBody String body,
+            @RequestHeader("content-type") String contentType,
+            @CookieValue(value = "JSESSIONID", required = false) String sessionId
+    ) throws UnsupportedEncodingException {
+
+        System.out.println("body : " + URLDecoder.decode(body, StandardCharsets.UTF_8));
+        System.out.println("contentType = " + contentType);
+        System.out.println("sessionId = " + sessionId);
+    }
+    /* 결과
+    *   body : name=피자&price=1000&categoryCode=1&orderableStatus=y
+        contentType = application/x-www-form-urlencoded
+        sessionId = 400DA1739AD6C747B5B431A7E61F27E5*/
 }
