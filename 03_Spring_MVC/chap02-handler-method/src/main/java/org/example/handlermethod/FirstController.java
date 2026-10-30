@@ -40,4 +40,27 @@ public class FirstController {
 
         return "first/messagePrinter";
     }
+
+    // view 이동용
+    @GetMapping("modify")
+    public void modify() {
+
+    }
+
+    // @RequestParam : 요청 파라미터를 매개변수에 바로 바인딩한다. (매개변수 이름 = 폼 input의 name)
+    // - 생략 가능하다.
+
+    // required: 기본값은 true, 필수 파라미터가 없으면 400 예외 발생
+    // defaultValue: 값이 없거나 비어 있을 때 사용할 기본값 지정
+    @PostMapping("modify")
+    public String modifyMenu(
+            Model model,
+            @RequestParam String modifyName,
+            @RequestParam String modifyPrice
+    ) {
+        String message = modifyName + "을 " + modifyPrice + "원으로 수정했습니다.";
+        model.addAttribute("message", message);
+
+        return "first/messagePrinter";
+    }
 }
