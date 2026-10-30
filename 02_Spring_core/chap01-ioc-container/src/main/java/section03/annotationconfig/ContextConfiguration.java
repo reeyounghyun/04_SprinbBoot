@@ -4,7 +4,6 @@ import common.MemberDAO;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
-import org.springframework.stereotype.Repository;
 
 // @Configuration이 정의된 클래스가 설정파일임을 의미(bean)
 /*
