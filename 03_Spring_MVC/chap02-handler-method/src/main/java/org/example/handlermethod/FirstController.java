@@ -99,12 +99,16 @@ public class FirstController {
      * -- 세션은 사물함, JSESSIONID는 열쇠 번호
      *    정보(로그인 id 등)는 서버의 사물함에 있고, 브라우저는 열쇠 번호(쿠키)만 들고 다닌다.
      *
-     * -- 동작 원리
-     *    1. 브라우저가 처음 접속
-     *    2. 서버: 세션(사물함)을 만들고 번호(JSESSIONID)를 붙임
-     *    3. 서버 → 브라우저: 그 번호를 쿠키로 보냄
-     *    4. 이후 요청마다 브라우저가 쿠키(JSESSIONID)를 같이 보냄
-     *    5. 서버: 번호를 보고 그 사용자의 세션을 찾아서 꺼냄
+     * Session : 사용자별 정보를 일정시간 동안 보관하는 공간 (서버측)
+     * - key-value 쌍으로 보관
+     * - 로그인상태, 장바구니같은 임시정보를 유지할때 사용
+     *
+     * -- [세션] 동작과정 (로그인할 때의 흐름)
+     *    1. 사용자가 처음, 서버에 요청
+     *    2. 서버가 사용자 전용 세션(사물함)을 만듦 (JSESSIONID : 식별키)
+     *    3. 서버가 사용자에게 응답할 때 JSESSIONID 쿠키 전달
+     *    4. 브라우저가 이후 요청마다 JSESSIONID 쿠키를 전송
+     *    5. 서버: 쿠키 번호를 보고 그 사용자의 세션을 찾아서 꺼냄
      *
      * -- 서버의 세션 저장소 예시
      *    JSESSIONID        보관된 값
@@ -122,6 +126,20 @@ public class FirstController {
         // 값을 담아주기
         session.setAttribute("id", id); // 세션에 값 저장
 
+        return "first/loginResult";
+    }
+
+    /*
+     * -- [로그아웃] 동작과정
+     *    1. 브라우저가 /first/logout 요청 (JSESSIONID 쿠키와 함께)
+     *    2. 서버: 쿠키 번호로 그 사용자의 세션을 찾음
+     *    3. session.invalidate() → 세션(사물함)과 안에 담긴 값(id)을 모두 삭제
+     *    4. 이후 ${session.id}는 null이 되어 로그인 안 된 상태로 보임
+     *       (다음 요청 때 필요하면 새 세션이 새 번호로 만들어짐)
+     * */
+    @GetMapping("logout")
+    public String logoutTest(HttpSession session) {
+        session.invalidate(); // 세션 삭제
         return "first/loginResult";
     }
 }

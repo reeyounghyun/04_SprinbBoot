@@ -20,7 +20,8 @@
 
     <h3>4. HttpSession 이용하기 </h3>
     <button onclick="location.href='/first/login'">Session에 정보담기</button>
-    <h3>[Session] 정보</h3>
+    <button onclick="location.href='/first/logout'">로그아웃</button>
+    <!-- <h3>[Session] 정보</h3>-->
     <!--
     NULL이면 안보여줌
     th:if="조건" : 조건이 참일 때만 이 div를 화면에 그리고, 거짓이면 태그 전체가 사라진다. JS의 if와 비슷하다.
@@ -31,9 +32,9 @@
     != null      : 값이 있으면, 즉 로그인해서 세션에 id가 담겨 있으면 참
     |...|        : 문자열과 값을 이어 붙이는 문법. ${session.id} + "님 환영합니다."와 같다.
     -->
-    <div th:if="${session.id != null}">
+    <!-- <div th:if="${session.id != null}">
         <p th:text="|${session.id}님 환영합니다.|"></p>
-    </div>
+    </div>-->
 
 </body>
 </html>
