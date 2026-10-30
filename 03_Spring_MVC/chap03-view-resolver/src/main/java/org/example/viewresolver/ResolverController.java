@@ -15,16 +15,12 @@ public class ResolverController {
     @GetMapping("string")
     public String stringReturning(Model model) {
 
-
         model.addAttribute("forwardMessage", "문자열로 뷰 이름 반환함...");
-
-
         return "result";
     }
 
     @GetMapping("string-redirect")
     public String stringRedirect()  {
-
 
         return "redirect:/";
     }
@@ -34,7 +30,10 @@ public class ResolverController {
     public String stringRedirectFlashAttribute(RedirectAttributes rAttr) {
 
         rAttr.addFlashAttribute("flashMessage1", "RedirectAttribute를 사용해 redirect..");
-
+        /*
+         * flash attribute : 리다이렉트 대상의 다음 요청에 자동으로 전달된다.
+         *                 - 한번 사용뒤 제거되는 일회용 데이터
+         * */
         return "redirect:/";
     }
 
@@ -42,9 +41,8 @@ public class ResolverController {
     public ModelAndView modelAndViewReturning(ModelAndView mv) {
 
 
-        mv.addObject("forwardMessage", "ModelAndView를 이용한 모델과 뷰 반환");
-        mv.setViewName("result");
-
+        mv.addObject("forwardMessage", "ModelAndView를 이용한 모델과 뷰 반환"); // 데이터 전달
+        mv.setViewName("result"); // PATH 지정
         return mv;
     }
 
@@ -52,7 +50,6 @@ public class ResolverController {
     public ModelAndView modelAndViewRedirect(ModelAndView mv)  {
 
         mv.setViewName("redirect:/");
-
         return mv;
     }
 
