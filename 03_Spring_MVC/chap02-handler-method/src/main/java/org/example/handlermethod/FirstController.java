@@ -63,4 +63,27 @@ public class FirstController {
 
         return "first/messagePrinter";
     }
+
+
+    @GetMapping("search")
+    public void search() {
+
+    }
+
+
+    /*
+     * @ModelAttribute: 여러 요청 파라미터를 DTO 같은 객체에 바인딩
+     * -- 핸들러 메소드의 매개변수로 전달되는 동시에 Model에도 자동으로 추가된다.
+     * -- Model에 담길 변수는 이름을 작성하지 않으면 클래스명의 소문자 카멜케이스로 지정된다.
+     * -- Model에 담기는 이름은 매개변수 변수명(menu)과 상관없다.
+     *    이름을 지정하지 않으면 항상 클래스 이름(MenuDTO)에서 첫 글자만 소문자로 바꾼 menuDTO가 된다.
+     *      @ModelAttribute MenuDTO menu          → Model에 "menuDTO"로 담김
+     *      @ModelAttribute("menu") MenuDTO menu  → Model에 "menu"로 담김
+     * -- 이름을 지정하지 않는 방법도 있다.
+     *    컨트롤러는 그대로 두고 HTML 쪽을 ${ menuDTO.name }으로 바꿔도 동작한다. (둘 중 하나로 이름만 맞추면 된다.)
+     * */
+    @PostMapping("search")
+    public String searchMenu(@ModelAttribute("menu") MenuDTO menu) {
+        return "first/searchResult";
+    }
 }
